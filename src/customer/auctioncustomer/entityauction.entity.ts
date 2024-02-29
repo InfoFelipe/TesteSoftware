@@ -1,20 +1,20 @@
 
 export interface CustomerAuction{
   name: string;
-  type: string;
+  state: string;
   value: number;
   active?: boolean;
 }
 export class EntityAuction{
     _name: string;
-    _type: string;
+    _state: string;
     _value: number;
     _active: boolean;
     
     constructor(props: CustomerAuction) {
       this._name = props.name;
       this._value = props.value;
-      this._type = props.type;
+      this._state = props.state = 'Inativo';
       this._active = props.active || true;
     }
 
@@ -26,12 +26,12 @@ export class EntityAuction{
        this._name = value;
     }
 
-    get types(): string{
-      return this._type
+    get state(): string{
+      return this._state
     }
 
-    private set types(value: string){
-       this._type = value;
+    private set state(value: string){
+       this._state = value;
     }
 
     get value(): number{

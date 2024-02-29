@@ -1,4 +1,4 @@
-import { name } from "../modules/auction";
+import { name, listName, filtro } from "../modules/auction";
 
 
 describe("Testando se o nome esperando caracter vazio e recebendo vazio.", ()=>{
@@ -35,6 +35,22 @@ describe("Testando se o nome possui valor Undefined.", ()=>{
       expect(name.toString()).toBeUndefined();
   })
 })
+
+describe("Testando lista de nomes.", ()=>{
+  it("Lista nomes.",()=>{
+
+    
+      expect(listName()).toEqual(["Nome 1", "Nome 2", "Nome 3", "Nome 4", "Nome 5"])
+  })
+})
+
+describe("Testando lista de nomes.", ()=>{
+  it("Lista nomes.",()=>{
+      expect(filtro()).toBeTruthy();
+  })
+})
+
+
 
 
 

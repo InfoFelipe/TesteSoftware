@@ -1,4 +1,4 @@
-import { EntityAuction } from "../src/customer/auctioncustomer/entityauction.entity";
+import { EntityAuction } from "./auctioncustomer/entityauction.entity";
 
 describe("Testando a inicialização da classe EntityAuction", ()=>{
     let customer: any = EntityAuction;
@@ -7,7 +7,7 @@ describe("Testando a inicialização da classe EntityAuction", ()=>{
         customer = new EntityAuction({
             name: 'dummy name',
             value: 0,
-            type: 'Inativo',
+            state: 'Inativo',
 
         })
     })
@@ -20,6 +20,6 @@ describe("Testando a inicialização da classe EntityAuction", ()=>{
         expect(customer.name).toBe("dummy name")
         expect(customer.active).toBeTruthy()
         expect(customer.value).toBe(0);
-        expect(customer.types).toBe("Inativo")
+        expect(customer.state).toBe("Inativo")
     })
 })
