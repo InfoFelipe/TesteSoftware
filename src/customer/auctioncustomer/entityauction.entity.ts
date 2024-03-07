@@ -4,18 +4,22 @@ export interface CustomerAuction{
   state: string;
   value: number;
   active?: boolean;
+  lance: number;
 }
+
 export class EntityAuction{
     _name: string;
     _state: string;
     _value: number;
     _active: boolean;
+    _lance: number;
     
     constructor(props: CustomerAuction) {
       this._name = props.name;
       this._value = props.value;
-      this._state = props.state = 'Inativo';
+      this._state = 'Ativo';
       this._active = props.active || true;
+      this._lance = props.lance;
     }
 
     get name(): string{
@@ -31,6 +35,7 @@ export class EntityAuction{
     }
 
     private set state(value: string){
+      
        this._state = value;
     }
 
@@ -39,7 +44,13 @@ export class EntityAuction{
     }
 
     private set value(value: number){
-       this._value = value;
+
+     let lance = this.lance
+      let valor = this.value
+      if(valor < lance){
+        value = lance
+        this._value = value 
+      }
     }
 
     get active(): boolean{
@@ -48,5 +59,27 @@ export class EntityAuction{
 
     private set active(value: boolean){
        this._active = value;
+    }
+
+    get lance(): number{
+      return this._lance
+    }
+
+    private set lance(value: number){
+       this._lance = value;
+    }
+
+    public Lances(valor: number, lanceteste: number){
+      let valorinicial = this.value
+      const lanceincial = this.lance
+
+      if(valorinicial < lanceincial){
+        const newvalue = valorinicial + lanceincial
+        valorinicial = newvalue
+        return  valorinicial
+      }else{
+        return valorinicial
+      }
+      
     }
   }
