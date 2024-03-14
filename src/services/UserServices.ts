@@ -6,12 +6,13 @@ export class UserServices{
 
     public create(name: string, email: string, password: string, users: EntityUser[]){
        
-        if(!name || !password || !email) {
+        try {
+            if(!name || !password || !email) {
                 return {
                     message: 'Preencha todos os campos'
                 }
             }
-            
+
             const user: EntityUser = new EntityUser({name, password, email})
             
             users.push(user)
@@ -20,6 +21,11 @@ export class UserServices{
                 message: 'Usuário criado com sucesso!',
                 users
             }
+            
+        } catch (error) {
+            return error
+        }
+       
        
     }
 }

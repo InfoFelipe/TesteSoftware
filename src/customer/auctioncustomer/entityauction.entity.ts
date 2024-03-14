@@ -9,51 +9,36 @@ export interface CustomerAuction{
   bids: EntityBid[];
   opening_date: Date;
   closing_date: Date;
+  starting_bid:number;
   tag: string;
 }
 
 export class EntityAuction{
-   private _name: string;
-   private _state: state;
-   private _status: boolean;
-   private _bids: EntityBid[];
-   private _opening_date: Date;
-   private _closing_date: Date;
-   private _tag:string;
+  private state: state
+  private closing_date: Date
+  private opening_date: Date
+  private _bids: EntityBid[]
+  private starting_bid: number
+  private tag: string 
     
-    constructor(props: CustomerAuction) {
-      this._name = props.name;
-      this._state = props.state;
-      this._status = props.status || true;
-      this._bids = props.bids;
-      this._opening_date = props.opening_date;
-      this._closing_date = props.closing_date;
-      this._tag = props.tag
+  constructor(state: state, opening_date: Date, closing_date: Date, starting_bid: number, tag: string) {
+    this._bids = []
+    this.closing_date = closing_date
+    this.opening_date = opening_date
+    this.starting_bid = starting_bid
+    this.state = state
+    this.tag = tag
     }
 
-    get name(): string{
-      return this._name
-    }
-
-    private set name(value: string){
-       this._name = value;
-    }
-
+    
     public getState(): state {
-      return this._state
+      return this.state
   }
 
   public setStatus(status: state): void {
-      this._state = status
+      this.state = status
   }
 
-    get active(): boolean{
-      return this._status
-    }
-
-    private set active(value: boolean){
-       this._status = value;
-    }
 
     public addBid(bid: EntityBid){
       this._bids.push(bid)
@@ -68,23 +53,31 @@ export class EntityAuction{
   }
 
     public getTag(): string {
-      return this._tag
+      return this.tag
   }
 
   public getOpeningDate(): Date {
-      return this._opening_date
+      return this.opening_date
   }
 
   public setOpeningDate(opening_date: Date): void {
-      this._opening_date = opening_date
+      this.opening_date = opening_date
   }
 
   public getClosingDate(): Date{
-      return this._closing_date
+      return this.closing_date
   }
 
   public setClosingDate(closing_date: Date): void {
-      this._closing_date = closing_date
+      this.closing_date = closing_date
   }
+
+  public getStartingBid(): number {
+    return this.starting_bid
+}
+
+public setStartingBid(starting_bid: number): void {
+    this.starting_bid = starting_bid
+}
 
   }
