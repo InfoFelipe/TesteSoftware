@@ -1,0 +1,1 @@
+export type state = 'Aberto' | 'Finalizado' | 'Inativo' | 'Expirados'

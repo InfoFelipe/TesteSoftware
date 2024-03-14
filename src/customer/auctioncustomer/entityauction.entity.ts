@@ -1,25 +1,34 @@
+import { state } from "../../../Types/State";
+import { EntityBid } from "../bid_customer/entity_bid.entity";
+
 
 export interface CustomerAuction{
   name: string;
-  state: string;
-  value: number;
-  active?: boolean;
-  lance: number;
+  state: state;
+  status?: boolean;
+  bids: EntityBid[];
+  opening_date: Date;
+  closing_date: Date;
+  tag: string;
 }
 
 export class EntityAuction{
-    _name: string;
-    _state: string;
-    _value: number;
-    _active: boolean;
-    _lance: number;
+   private _name: string;
+   private _state: state;
+   private _status: boolean;
+   private _bids: EntityBid[];
+   private _opening_date: Date;
+   private _closing_date: Date;
+   private _tag:string;
     
     constructor(props: CustomerAuction) {
       this._name = props.name;
-      this._value = props.value;
-      this._state = 'Ativo';
-      this._active = props.active || true;
-      this._lance = props.lance;
+      this._state = props.state;
+      this._status = props.status || true;
+      this._bids = props.bids;
+      this._opening_date = props.opening_date;
+      this._closing_date = props.closing_date;
+      this._tag = props.tag
     }
 
     get name(): string{
@@ -30,56 +39,52 @@ export class EntityAuction{
        this._name = value;
     }
 
-    get state(): string{
+    public getState(): state {
       return this._state
-    }
+  }
 
-    private set state(value: string){
-      
-       this._state = value;
-    }
-
-    get value(): number{
-      return this._value
-    }
-
-    private set value(value: number){
-
-     let lance = this.lance
-      let valor = this.value
-      if(valor < lance){
-        value = lance
-        this._value = value 
-      }
-    }
+  public setStatus(status: state): void {
+      this._state = status
+  }
 
     get active(): boolean{
-      return this._active
+      return this._status
     }
 
     private set active(value: boolean){
-       this._active = value;
+       this._status = value;
     }
 
-    get lance(): number{
-      return this._lance
-    }
+    public addBid(bid: EntityBid){
+      this._bids.push(bid)
+  }
 
-    private set lance(value: number){
-       this._lance = value;
-    }
+  get bids():EntityBid[]{
+      return this._bids
+  }
 
-    public Lances(valor: number, lanceteste: number){
-      let valorinicial = this.value
-      const lanceincial = this.lance
+  set bids(bids: EntityBid[]){
+      this._bids = bids
+  }
 
-      if(valorinicial < lanceincial){
-        const newvalue = valorinicial + lanceincial
-        valorinicial = newvalue
-        return  valorinicial
-      }else{
-        return valorinicial
-      }
-      
-    }
+    public getTag(): string {
+      return this._tag
+  }
+
+  public getOpeningDate(): Date {
+      return this._opening_date
+  }
+
+  public setOpeningDate(opening_date: Date): void {
+      this._opening_date = opening_date
+  }
+
+  public getClosingDate(): Date{
+      return this._closing_date
+  }
+
+  public setClosingDate(closing_date: Date): void {
+      this._closing_date = closing_date
+  }
+
   }
