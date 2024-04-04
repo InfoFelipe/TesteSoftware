@@ -12,11 +12,11 @@ export class EntityBid {
     private _auction: EntityAuction;
     private _value: number;
 
-    constructor(props: CustomerBid){
+    constructor(user: EntityUser, auction: EntityAuction, value: number){
 
-        this._user = props.user;
-        this._auction = props.auction;
-        this._value = props.value;
+        this._user = user;
+        this._auction = auction;
+        this._value = value;
 
     }
 

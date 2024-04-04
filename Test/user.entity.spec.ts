@@ -13,7 +13,7 @@ describe('Processo de criação de usuário', ()=>{
 
     const userService = new UserServices(); 
 
-    it('Criado com sucesso!', ()=>{
+    it('Usuário Criado com sucesso!', ()=>{
         const name = 'Felipe'
         const password = 'lavamos1234568'
         const  email = 'felipe@gmail.com' 
@@ -22,7 +22,7 @@ describe('Processo de criação de usuário', ()=>{
         expect(result.message).toBe('Usuário criado com sucesso!')
     })
 
-    it('Campos sem preenchimento.', ()=>{
+    it('Campos sem preenchimento de alguns dados do Usuário.', ()=>{
         const name = 'Felipe'
         const password = 'lavamos1234568'
         const email = 'felipe@gmail.com'

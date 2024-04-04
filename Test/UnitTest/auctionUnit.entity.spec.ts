@@ -1,6 +1,6 @@
 import { EntityAuction } from "../../src/customer/auctioncustomer/entityauction.entity"
 
-describe('Testando a Auction',() => {
+describe('Testando a inicialização da classe Auction',() => {
     let auction: any = EntityAuction
 
     beforeEach(() => {
@@ -13,14 +13,14 @@ describe('Testando a Auction',() => {
         )
     })
 
-    it('Testeando valores iniciais', () => {
+    it('Testeando valores iniciais do Leilão', () => {
         expect(auction.getTag()).toBe('abcd#12345')
         expect(auction.getOpeningDate().toDateString()).toBe(new Date('2024-03-30').toDateString())
         expect(auction.getClosingDate().toDateString()).toBe(new Date('2024-05-30').toDateString())
         expect(auction.getStartingBid()).toBe(80.0)
     })
 
-    it('Alterando valores', () => {
+    it('Alterando valores do Leilão', () => {
         auction.setStatus('Inativo')
         auction.setStartingBid(90)
         auction.setOpeningDate(new Date('2024-02-03'))

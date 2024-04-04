@@ -9,7 +9,7 @@ export class UserServices{
         try {
             if(!name || !password || !email) {
                 return {
-                    message: 'Preencha todos os campos'
+                    message: 'Preencha todos os campos!'
                 }
             }
 
